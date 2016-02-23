@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## Put comments here that give an overall description of what your\n## functions do\n\n## This function creates a special \"matrix\" object that can cache its inverse\n\nmakeCacheMatrix <- function(x = matrix()) {\n        m<-NULL\n        set<-function(y){\n                x<<-y\n                m<<-NULL\n        }\n        get<-function() x\n        setInvertedMatrix<-function(solve) m<<- solve\n        getInvertedMatrix<-function() m\n        list(set=set, get=get,\n             setInvertedMatrix=setInvertedMatrix,\n             getInvertedMatrix=getInvertedMatrix)\n}\n\n\n## This function computes the inverse of the special \"matrix\" returned by makeCacheMatrix above. \n## If the inverse has already been calculated (and the matrix has not changed), \n## then the cachesolve should retrieve the inverse from the cache.\n\ncacheSolve <- function(x, ...) {\n        \n        m<-x$getInvertedMatrix()\n        if(!is.null(m)){\n                message(\"getting cached data\")\n                return(m)\n        }\n        matrix<-x$get()\n        m<-solve(matrix, ...)\n        x$setInvertedMatrix(m)\n        m\n}\n",
+    "created" : 1456231402684.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2547539181",
+    "id" : "8E7506C",
+    "lastKnownWriteTime" : 1456240457,
+    "last_content_update" : 1456240457851,
+    "path" : "~/Documents/06.Repositories/datasciencecoursera/02.R Programming/ProgrammingAssignment2/cachematrix.R",
+    "project_path" : "cachematrix.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
